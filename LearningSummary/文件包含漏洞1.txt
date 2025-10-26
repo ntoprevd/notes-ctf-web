@@ -1,0 +1,12 @@
+1. isset()检查参数是否设置且不为null，返回true/flase
+2. empty()检查参数是否为空，返回true/flase
+3. include()函数会找到并且执行其中包含的php代码
+4. file_get_contents()函数会找到并返回纯文本内容。
+5. 命名变量规则:$变量名.
+6. $_GET["xxx"]中的xxx在网页中的位置:http：//.../?xxx=abc ,我们可以定义xxx。
+7. 具体的文件名可以直接使用，比如比如 include("flag.php")或 include($variable)
+8. 对于if(file_get_contents($file2) === "hello") {include($file1);}, 要构造file1和file2参数。
+	方法一：构造http：//.../?file2=php://input&file1=flag.php ，然后将GET改为POST，在请求头写入Content-Type: application/x-www-form-urlencoded, 空一行，在请求体写入hello
+	方法二：构造http：//.../?file2=data://text/plain,hello&file1=flag.php。data伪协议的格式为: data://我忘了。
+9. extract($_GET)：把$_GET数组中的所有键值对变成变量。如用户访问?name=张三&age=20&city=北京，执行 extract($_GET) 后，PHP会自动创建：$name = "张三";$age = "20"; $city = "北京";
+extract()的危险性：它允许攻击者覆盖任何变量，包括系统重要的变量。
